@@ -1,0 +1,47 @@
+# Node.js dependencies (node_modules folder ko ignore karega)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (Sensitive data like API keys)
+.env
+
+# Logs (Server logs ignore karega)
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/
+coverage/
+
+# Database files
+*.sqlite
+*.sqlite3
+/data/db
+
+# VS Code settings
+.vscode/
+.idea/
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# Docker files (agar use kar rahe hain)
+docker-compose.yml
+docker-compose.override.yml
+
+# Jest test coverage
+/coverage
+
+# TypeScript files (agar use kar ra
