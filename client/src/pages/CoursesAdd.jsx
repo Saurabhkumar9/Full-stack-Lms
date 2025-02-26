@@ -2,13 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+
 function CoursesAdd() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -40,95 +40,121 @@ function CoursesAdd() {
       toast.success("Course added successfully!");
       reset();
     } catch (error) {
-      toast.error(error.response.data.message || "Something went wrong!");
+      toast.error(error.response?.data?.message || "Something went wrong!");
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900 rounded-sm">
-      <div className="bg-gray-400 p-6 m-2 rounded-lg shadow-lg w-[70%]">
-        <div className="text-center bg-slate-900 p-4 rounded-sm">
-          <p className="font-bold text-white text-xl">Add Course</p>
+    <div className="flex justify-center items-center min-h-screen ">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div className="text-center bg-indigo-600 p-3 rounded-sm">
+          <p className="font-bold text-white text-lg">Add Course</p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Course Name */}
-          <label className="block text-gray-900 font-medium">Course Name</label>
-          <input
-            type="text"
-            {...register("courseName", { required: "Course Name is required" })}
-            className="w-full p-2 border rounded mb-3"
-          />
-          {errors.courseName && (
-            <p className="text-red-800">{errors.courseName.message}</p>
-          )}
+          <div>
+            <label className="block text-gray-800 font-medium">
+              Course Name
+            </label>
+            <input
+              type="text"
+              {...register("courseName", {
+                required: "Course Name is required",
+              })}
+              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {errors.courseName && (
+              <p className="text-red-600 text-sm">
+                {errors.courseName.message}
+              </p>
+            )}
+          </div>
 
           {/* Author Name */}
-          <label className="block text-gray-900 font-medium">Author Name</label>
-          <input
-            type="text"
-            {...register("authorName", { required: "Author Name is required" })}
-            className="w-full p-2 border rounded mb-3"
-          />
-          {errors.authorName && (
-            <p className="text-red-800">{errors.authorName.message}</p>
-          )}
+          <div>
+            <label className="block text-gray-800 font-medium">
+              Author Name
+            </label>
+            <input
+              type="text"
+              {...register("authorName", {
+                required: "Author Name is required",
+              })}
+              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {errors.authorName && (
+              <p className="text-red-600 text-sm">
+                {errors.authorName.message}
+              </p>
+            )}
+          </div>
 
           {/* Course Price */}
-          <label className="block text-gray-900 font-medium">
-            Course Price
-          </label>
-          <input
-            type="number"
-            {...register("coursePrice", {
-              required: "Course Price is required",
-              valueAsNumber: true,
-              min: { value: 0, message: "Price must be greater than 0" },
-            })}
-            className="w-full p-2 border rounded mb-3"
-          />
-          {errors.coursePrice && (
-            <p className="text-red-800">{errors.coursePrice.message}</p>
-          )}
+          <div>
+            <label className="block text-gray-800 font-medium">
+              Course Price
+            </label>
+            <input
+              type="number"
+              {...register("coursePrice", {
+                required: "Course Price is required",
+                valueAsNumber: true,
+                min: { value: 0, message: "Price must be greater than 0" },
+              })}
+              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {errors.coursePrice && (
+              <p className="text-red-600 text-sm">
+                {errors.coursePrice.message}
+              </p>
+            )}
+          </div>
 
           {/* Course Description */}
-          <label className="block text-gray-900 font-medium">
-            Course Description
-          </label>
-          <textarea
-            {...register("courseDescription", {
-              required: "Course Description is required",
-            })}
-            className="w-full p-2 border rounded mb-3"
-          ></textarea>
-          {errors.courseDescription && (
-            <p className="text-red-800">{errors.courseDescription.message}</p>
-          )}
+          <div>
+            <label className="block text-gray-800 font-medium">
+              Course Description
+            </label>
+            <textarea
+              {...register("courseDescription", {
+                required: "Course Description is required",
+              })}
+              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            ></textarea>
+            {errors.courseDescription && (
+              <p className="text-red-600 text-sm">
+                {errors.courseDescription.message}
+              </p>
+            )}
+          </div>
 
           {/* Upload Image */}
-          <label className="block text-gray-900 font-medium">
-            Upload Image
-          </label>
-          <input
-            type="file"
-            {...register("image", { required: "Image is required" })}
-            className="w-full p-2 border rounded mb-3"
-          />
-          {errors.image && (
-            <p className="text-red-800">{errors.image.message}</p>
-          )}
+          <div>
+            <label className="block text-gray-800 font-medium">
+              Upload Image
+            </label>
+            <input
+              type="file"
+              {...register("image", { required: "Image is required" })}
+              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {errors.image && (
+              <p className="text-red-600 text-sm">{errors.image.message}</p>
+            )}
+          </div>
 
           {/* Buttons */}
-          <div className="flex justify-end mt-4">
+          <div className="flex justify-between mt-4">
             <a
               href="/courses"
-              className="mr-2 px-4 py-2 bg-red-700 text-white rounded"
+              className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
             >
               Close
             </a>
             <button
               type="submit"
-              className="px-4 py-2 bg-green-600 text-white rounded"
+              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
             >
               Submit
             </button>

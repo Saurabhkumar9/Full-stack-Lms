@@ -2,13 +2,13 @@ const PurchasedCourse = require("../../Models/CourseModels/PurchasedCourse.model
 
 const buyCourse = async (req, res) => {
   try {
-    const { courseId } = req.body; // ✅ Extract courseId from request body
-    const userId = req.user.id; // ✅ Extract userId from authenticated user
+    const { courseId } = req.body; 
+    const userId = req.user.id; 
 
-    console.log("User ID from Token:", userId);
-    console.log("Course ID from Request Body:", courseId);
+    // console.log("User ID from Token:", userId);
+    // console.log("Course ID from Request Body:", courseId);
 
-    // ✅ Check if the course is already purchased
+    // Check if the course is already purchased
     const alreadyPurchased = await PurchasedCourse.findOne({ userId, courseId });
 
     if (alreadyPurchased) {
@@ -18,7 +18,7 @@ const buyCourse = async (req, res) => {
       });
     }
 
-    // ✅ Save purchase record
+    //  Save purchase record
     const purchase = new PurchasedCourse({ courseId, userId });
     await purchase.save();
 

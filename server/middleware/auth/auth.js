@@ -13,12 +13,12 @@ const authMiddleware = async (req, res, next) => {
     }
 
     const token = authHeader.split(" ")[1];
-    console.log(token);
+    // console.log(token);
 
     const key = process.env.JWT_SECRET;
 
     const decodedToken = jwt.verify(token, key);
-    console.log("Decoded Token:", decodedToken);
+    // console.log("Decoded Token:", decodedToken);
 
 
     // Corrected from decodedToken.Id to decodedToken.id

@@ -69,21 +69,23 @@ function CoursesDetail() {
 
   return (
     <div className="bg-gray-100">
-      <h2 className="text-3xl font-bold text-gray-900">
-        Course Information (Course ID: {id})
+      <h2 className="text-3xl  font-bold text-gray-900 text-center mb-2">
+        Course Details
       </h2>
+      <p className="text-md lg:text-2xl text-red-500 text-center">(ID: {id})</p>
+
       <div className="left-0 p-12 bg-white shadow-lg rounded-lg">
         <h3 className="text-xl font-semibold text-indigo-600">
-    <strong>Course Name:</strong> {courseInfo.courseName}
+          <strong>Course Name:</strong> {courseInfo.courseName}
         </h3>
         <p className="mt-2 text-gray-600">
-        <strong>Course Description:</strong> {courseInfo.courseDescription}
+          <strong>Course Description:</strong> {courseInfo.courseDescription}
         </p>
         <p className="mt-2 text-gray-600">
-        <strong>Course Mentor:</strong> {courseInfo.authorName}
+          <strong>Course Mentor:</strong> {courseInfo.authorName}
         </p>
         <p className="mt-2 text-gray-600">
-        <strong>Course Price:</strong> {courseInfo.coursePrice}
+          <strong>Course Price:</strong> {courseInfo.coursePrice}
         </p>
       </div>
       <div className="max-w-4xl mx-auto text-center">

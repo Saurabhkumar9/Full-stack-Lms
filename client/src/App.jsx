@@ -1,6 +1,7 @@
-import React from "react";
-import Navbar from "./components/Navbar";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -10,20 +11,22 @@ import Students from "./pages/Students";
 import Feedback from "./pages/Feedback";
 import CoursesDetail from "./pages/CoursesDetail";
 import LessonAdd from "./pages/LessonAdd";
-import { ToastContainer } from "react-toastify";
 import ContactList from "./pages/ContactList";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function App() {
   return (
     <>
+      {/* Navbar */}
       <Navbar />
 
-      <div className="flex flex-col md:flex-row w-full p-2">
-        <div className="bg-base-300 rounded-sm w-full md:w-[25%] m-2 p-4">
-          <Sidebar />
-        </div>
+      <div className="flex min-h-screen">
+        {/* Sidebar */}
 
-        <div className="card bg-base-300 rounded-box grid h-auto w-full md:w-[74%] m-2 p-4">
+        <Sidebar />
+
+        {/* Main Content */}
+        <div className="flex-1 p-4 bg-gray-100 overflow-auto w-full md:w-[75%]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
@@ -39,6 +42,7 @@ function App() {
         </div>
       </div>
 
+      {/* Footer */}
       <Footer />
     </>
   );
